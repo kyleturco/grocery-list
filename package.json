@@ -1,13 +1,13 @@
 {
-  "name": "static-starter",
+  "name": "grocery-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "TA Static Starter =========== TechnologyAdvice static html starter kit.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Kyle Turco <kyleturco@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.1.4",
     "babel-preset-es2015": "^6.1.4",
@@ -24,5 +24,14 @@
     "gulp-webserver": "^0.9.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyleturco/grocery-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyleturco/grocery-list/issues"
+  },
+  "homepage": "https://github.com/kyleturco/grocery-list#readme"
 }
