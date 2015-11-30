@@ -1,4 +1,4 @@
-var ref = 'https://turco-groceries.firebaseio.com/';
+var ref = new Firebase('https://turco-groceries.firebaseio.com/');
 
 $('.btn-default').on('click', function () {
   ref.push({
