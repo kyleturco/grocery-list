@@ -1,9 +1,8 @@
 var ref = new Firebase('https://turco-groceries.firebaseio.com/');
 
-$('.btn-default').on('click', function () {
+$('.grocery-submit').on('click', function () {
   ref.push({
-    item: $('.add-grocery').val()
+    item: $('.add-grocery-input').val()
   });
-  $('.add-grocery').val('');
-  console.log("this shit worked");
+  $('.add-grocery-input').val('');
 });

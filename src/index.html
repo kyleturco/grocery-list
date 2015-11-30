@@ -4,15 +4,26 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Grocery List</title>
+  <link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.min.css?v=CACHE_BUST_STRING">
 </head>
 <body>
   <div class="hero-section">
     <div class="container">
-      <h1>Hello out there</h1>
-      <input class="add-grocery" placeholder="Add grocery">
-      <button type="submit" class="btn btn-default">Submit</button>
+      <h1>Turco Groceries</h1>
+      <hr>
+      <div class="add-grocery">
+        <h4>Add a Grocery item</h4>
+        <input class="add-grocery-input" placeholder="Add grocery">
+        <button type="submit" class="btn grocery-submit btn-primary">Submit</button>
+      </div>
+      <div class="grocery-list">
+        <h4>Grocery Items</h4>
+        <div class="single-grocery-item">
+          <p><i class="fa fa-check-circle-o"></i> Food item!</p>
+        </div>
+      </div>
     </div>
   </div>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
