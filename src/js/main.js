@@ -38,5 +38,6 @@ ref.once("value", function(allGroceriesSnapshot) {
     var key = grocerySnapshot.key();
     var item = grocerySnapshot.child("item").val();
     console.log(item);
+    $('.single-grocery-item').append("<div>" + item + "</div>");
   })
-})
+});
