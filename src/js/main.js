@@ -16,7 +16,7 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 
-var ref = new Firebase('https://turco-groceries.firebaseio.com/');
+var ref = new Firebase('https://turco-groceries.firebaseio.com/groceries');
 
 $('.grocery-submit').on('click', function() {
   if ($('#add-grocery-input').val().length == 0) {
@@ -28,3 +28,15 @@ $('.grocery-submit').on('click', function() {
     $('#add-grocery-input').val('');
   }
 });
+
+// var itemDisplay = $('#single-grocery-text');
+// var itemInput = $('#add-grocery-input');
+// var submitBtn = $('.grocery-submit');
+
+ref.once("value", function(allGroceriesSnapshot) {
+  allGroceriesSnapshot.forEach(function(grocerySnapshot) {
+    var key = grocerySnapshot.key();
+    var item = grocerySnapshot.child("item").val();
+    console.log(item);
+  })
+})
