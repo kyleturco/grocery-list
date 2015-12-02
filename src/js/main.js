@@ -1,8 +1,30 @@
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
 var ref = new Firebase('https://turco-groceries.firebaseio.com/');
 
 $('.grocery-submit').on('click', function () {
-  ref.push({
-    item: $('.add-grocery-input').val()
-  });
-  $('.add-grocery-input').val('');
+  if ($('#add-grocery-input').val().length == 0) {
+    toastr["error"]("Please enter a grocery item")
+  } else {
+    ref.push({
+      item: $('#add-grocery-input').val(),
+    });
+    $('#add-grocery-input').val('');
+  }
 });

@@ -4,7 +4,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Grocery List</title>
-  <link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/main.min.css?v=CACHE_BUST_STRING">
 </head>
@@ -15,17 +16,19 @@
       <hr>
       <div class="add-grocery">
         <h4>Add a Grocery item</h4>
-        <input class="add-grocery-input" placeholder="Add grocery">
+        <input id="add-grocery-input" placeholder="Add grocery">
         <button type="submit" class="btn grocery-submit btn-primary">Submit</button>
       </div>
       <div class="grocery-list">
         <h4>Grocery Items</h4>
+        <hr>
         <div class="single-grocery-item">
           <p><i class="fa fa-check-circle-o"></i> Food item!</p>
         </div>
       </div>
     </div>
   </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
   <script type="text/javascript" src="js/main.min.js?v=CACHE_BUST_STRING"></script>
