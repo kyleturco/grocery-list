@@ -18,9 +18,9 @@ toastr.options = {
 
 var ref = new Firebase('https://turco-groceries.firebaseio.com/');
 
-$('.grocery-submit').on('click', function () {
+$('.grocery-submit').on('click', function() {
   if ($('#add-grocery-input').val().length == 0) {
-    toastr["error"]("Please enter a grocery item")
+    toastr["error"]("Error: Please enter a grocery item")
   } else {
     ref.push({
       item: $('#add-grocery-input').val(),
