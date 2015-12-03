@@ -22,8 +22,11 @@ $('.grocery-submit').on('click', function() {
   if ($('#add-grocery-input').val().length == 0) {
     toastr["error"]("Error: Please enter a grocery item")
   } else {
+    var input = $('#add-grocery-input').val();
+    var newInput = input.charAt(0).toUpperCase() + input.slice(1);
+    console.log(newInput);
     ref.push({
-      item: $('#add-grocery-input').val(),
+      item: newInput,
     });
     $('#add-grocery-input').val('');
   }
@@ -37,7 +40,6 @@ ref.once("value", function(allGroceriesSnapshot) {
   allGroceriesSnapshot.forEach(function(grocerySnapshot) {
     var key = grocerySnapshot.key();
     var item = grocerySnapshot.child("item").val();
-    console.log(item);
     $('.single-grocery-item').append("<div>" + item + "</div>");
   })
 });
