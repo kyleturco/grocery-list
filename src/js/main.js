@@ -30,7 +30,9 @@ $('.grocery-submit').on('click', function() {
       item: newInput,
     });
     $('#add-grocery-input').val('');
-    $('.single-grocery-item').append("<div>" + newInput + "</div>");  }
+    var deleteIcon = '<i class="fa fa-check-circle-o"></i>';
+    $('.single-grocery-item').append("<div class='grocery-item'>" + deleteIcon + ' ' + newInput + "</div>");
+  }
 });
 
 
@@ -40,7 +42,8 @@ window.onload = function() {
     allGroceriesSnapshot.forEach(function(grocerySnapshot) {
       var key = grocerySnapshot.key();
       var item = grocerySnapshot.child("item").val();
-      $('.single-grocery-item').append("<div>" + item + "</div>");
+      var deleteIcon = '<i class="fa fa-check-circle-o"></i>';
+      $('.single-grocery-item').append("<div class='grocery-item'>" + deleteIcon + ' ' + item + "</div>");
     })
   });
 }
