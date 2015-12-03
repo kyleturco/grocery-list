@@ -30,20 +30,25 @@ $('.grocery-submit').on('click', function() {
       item: newInput,
     });
     $('#add-grocery-input').val('');
-    var deleteIcon = '<i class="fa fa-check-circle-o"></i>';
-    $('.single-grocery-item').append("<div class='grocery-item'>" + deleteIcon + ' ' + newInput + "</div>");
+    var deleteIcon = '<button id="delete-btn" class="btn btn-default"><i class="fa fa-check-circle-o"></i></button>';
+    $('.single-grocery-item').append("<div id='grocery-item'>" + deleteIcon + ' ' + newInput + "</div>");
   }
 });
 
+// Removes an item once it's been acquired
+$('#delete-btn').on('click', function() {
+  var party = 'woo woo!';
+  console.log(party);
+});
 
-// Adds the grocery items to the page
+// Adds the grocery items to the page on page load
 window.onload = function() {
   ref.once("value", function(allGroceriesSnapshot) {
     allGroceriesSnapshot.forEach(function(grocerySnapshot) {
       var key = grocerySnapshot.key();
       var item = grocerySnapshot.child("item").val();
-      var deleteIcon = '<i class="fa fa-check-circle-o"></i>';
-      $('.single-grocery-item').append("<div class='grocery-item'>" + deleteIcon + ' ' + item + "</div>");
+      var deleteIcon = '<button id="delete-btn" class="btn btn-default"><i class="fa fa-check-circle-o"></i></button>';
+      $('.single-grocery-item').append("<div id='grocery-item'>" + deleteIcon + ' ' + item + "</div>");
     })
   });
-}
+};
