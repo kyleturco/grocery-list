@@ -35,12 +35,6 @@ $('.grocery-submit').on('click', function() {
   }
 });
 
-// Removes an item once it's been acquired
-$('#delete-btn').on('click', function() {
-  var party = 'woo woo!';
-  console.log(party);
-});
-
 // Adds the grocery items to the page on page load
 window.onload = function() {
   ref.once("value", function(allGroceriesSnapshot) {
@@ -52,3 +46,8 @@ window.onload = function() {
     })
   });
 };
+
+// Removes an item once it's been acquired
+$(document).on('click', '#delete-btn', function() {
+  console.log("test test");
+});
