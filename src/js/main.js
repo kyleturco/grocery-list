@@ -1,6 +1,6 @@
 $(document).ready(function ready() {
 
-  var ref = new Firebase('https://turco-groceries.firebaseio.com/groceries');
+  var ref = new Firebase('https://turco-groceries.firebaseio.com/groceries/');
 
   function init() {
     loadItems();
@@ -36,14 +36,13 @@ $(document).ready(function ready() {
 
   // Removes an item once it's been acquired
   $(document).on('click', '#delete-btn', function() {
-    ref.child().remove(function(error){
-      if (error) {
-        console.log("Error;", error);
-      } else {
-        console.log("Removed successfully");
-
-      }
-    })
+    ref.once("value", function(allGroceriesSnapshot) {
+      allGroceriesSnapshot.forEach(function(grocerySnapshot) {
+        var key = grocerySnapshot.key();
+        console.log(key);
+        // ref.child(key).remove();
+      })
+    });
   });
 
   // Toastr settings
