@@ -18,7 +18,7 @@ $(document).ready(function ready() {
       });
       $('#add-grocery-input').val('');
       var deleteIcon = '<button id="delete-btn" class="btn btn-default"><i class="fa fa-check-circle-o"></i></button>';
-      $('.single-grocery-item').append("<div id='grocery-item'>" + deleteIcon + ' ' + newInput + "</div>");
+      $('.single-grocery-item').append("<div id='grocery-item' data-id=''>" + deleteIcon + ' ' + newInput + "</div>");
     }
   });
 
