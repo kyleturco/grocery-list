@@ -12,6 +12,18 @@ $(document).ready(function ready() {
   function init() {
     loadItems()
 
+
+  // Adds the grocery items to the page on page load
+  function loadItems() {
+    ref.once("value", function(allGroceriesSnapshot) {
+      allGroceriesSnapshot.forEach(function(grocerySnapshot) {
+        var key = grocerySnapshot.key()
+        var item = grocerySnapshot.child("item").val()
+        $singleGrocery.append("<div id='grocery-item'>" + deleteIcon + ' ' + item + "</div>")
+      })
+    })
+  }
+
   // Saves the grocery item to Firebase
   // Calls the function to display it on the page
   $grocerySubmit.on('click', function() {
@@ -28,17 +40,6 @@ $(document).ready(function ready() {
       $singleGrocery.append("<div id='grocery-item' data-id=''>" + deleteIcon + ' ' + newInput + "</div>")
     }
   })
-
-  // Adds the grocery items to the page on page load
-  function loadItems() {
-    ref.once("value", function(allGroceriesSnapshot) {
-      allGroceriesSnapshot.forEach(function(grocerySnapshot) {
-        var key = grocerySnapshot.key()
-        var item = grocerySnapshot.child("item").val()
-        $singleGrocery.append("<div id='grocery-item'>" + deleteIcon + ' ' + item + "</div>")
-      })
-    })
-  }
 
   // Removes an item once it's been acquired
   $(document).on('click', '#delete-btn', function() {
