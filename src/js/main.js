@@ -21,6 +21,11 @@ jQuery(document).ready(function($) {
     })
   }
 
+  $grocerySubmit.on('click', addGrocery)
+  $(document).on('click', '#delete-btn', function(e) {
+    removeGroceryItem(e)
+  })
+
   function addGrocery(ref) {
     ref.push({
       groceryItem: $groceryInput.val()
@@ -29,16 +34,19 @@ jQuery(document).ready(function($) {
     render()
   }
 
-
-  $(document).on('click', '#delete-btn', function(e) {
-    getFbKey(e)
-  })
-
-  function getFbKey(e) {
-    console.log($(e.currentTarget).parent().attr('class'))
+  function removeGroceryItem(e) {
+    var groceryClass = $(e.currentTarget).parent().attr('class')
+    var groceryFbKey = groceryClass.split(' ').slice(1)
+    var groceryItemRef = new Firebase(ref + '/' + groceryFbKey)
+    groceryItemRef.remove(function(error) {
+      if (error) {
+        console.log("Error;", error);
+      } else {
+        console.log("Removed successfully");
+        render()
+      }
+    })
   }
-
-  $grocerySubmit.on('click', addGrocery)
 
   render()
 })
