@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
     removeGroceryItem(e)
   })
 
-  function addGrocery(ref) {
+  function addGrocery() {
     ref.push({
       groceryItem: $groceryInput.val()
     })
