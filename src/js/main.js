@@ -5,9 +5,9 @@ jQuery(document).ready(function($) {
   var $grocerySubmit = $('.grocery-submit')
   var $groceryInput = $('#add-grocery-input')
   var $singleGrocery = $('.single-grocery-item')
-  var $deleteBtn = $('#delete-btn')
+  var $deleteBtn = $('.delete-btn')
 
-  var deleteBtn = '<div class="btn btn-default" id="delete-btn">X</div>'
+  var deleteBtn = '<div class="btn delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></div>'
 
   function render() {
     $singleGrocery.empty()
@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
   }
 
   $grocerySubmit.on('click', addGrocery)
-  $(document).on('click', '#delete-btn', function(e) {
+  $(document).on('click', '.delete-btn', function(e) {
     removeGroceryItem(e)
   })
 
