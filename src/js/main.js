@@ -1,11 +1,13 @@
 jQuery(document).ready(function($) {
-
+  // Sets up FB ref
   var ref = new Firebase('https://turco-groceries.firebaseio.com/groceries/')
 
+  // DOM elements
   var $grocerySubmit = $('.grocery-submit')
   var $groceryInput = $('#add-grocery-input')
   var $singleGrocery = $('.single-grocery-item')
   var $deleteBtn = $('.delete-btn')
+  var $document = $(document)
 
   var deleteBtn = '<div class="btn delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></div>'
 
@@ -21,12 +23,13 @@ jQuery(document).ready(function($) {
     })
   }
 
-  $grocerySubmit.on('click', addGrocery)
-  $(document).on('click', '.delete-btn', function(e) {
+  // click handlers
+  $grocerySubmit.on('click', addGroceryItem)
+  $document.on('click', '.delete-btn', function(e) {
     removeGroceryItem(e)
   })
 
-  function addGrocery() {
+  function addGroceryItem() {
     ref.push({
       groceryItem: $groceryInput.val()
     })
@@ -35,14 +38,12 @@ jQuery(document).ready(function($) {
   }
 
   function removeGroceryItem(e) {
-    var groceryClass = $(e.currentTarget).parent().attr('class')
-    var groceryFbKey = groceryClass.split(' ').slice(1)
+    var groceryFbKey = $(e.currentTarget).parent().attr('class').split(' ').slice(1)
     var groceryItemRef = new Firebase(ref + '/' + groceryFbKey)
     groceryItemRef.remove(function(error) {
       if (error) {
         console.log("Error;", error);
       } else {
-        console.log("Item deleted");
         render()
       }
     })
