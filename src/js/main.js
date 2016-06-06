@@ -3,11 +3,12 @@ jQuery(document).ready(function($) {
   const ref = new Firebase('https://turco-groceries.firebaseio.com/groceries/')
 
   // DOM elements
+  const $document = $(document)
   const $grocerySubmit = $('.grocery-submit')
   const $groceryInput = $('#add-grocery-input')
   const $singleGrocery = $('.single-grocery-item')
   const $deleteBtn = $('.delete-btn')
-  const $document = $(document)
+  const $resetBtn =   $('.reset-list-btn')
 
   const deleteBtn = '<div class="btn delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></div>'
 
@@ -28,10 +29,13 @@ jQuery(document).ready(function($) {
   $document.on('click', '.delete-btn', function(e) {
     removeGroceryItem(e)
   })
+  $resetBtn.on('click', resetList)
 
   function addGroceryItem() {
+    const input = $groceryInput.val()
+    const newInput = input.charAt(0).toUpperCase() + input.slice(1)
     ref.push({
-      groceryItem: $groceryInput.val()
+      groceryItem: newInput
     })
     $groceryInput.val('')
     render()
@@ -42,7 +46,17 @@ jQuery(document).ready(function($) {
     const groceryItemRef = new Firebase(ref + '/' + groceryFbKey)
     groceryItemRef.remove(function(error) {
       if (error) {
-        console.log("Error;", error);
+        console.log("Error;", error)
+      } else {
+        render()
+      }
+    })
+  }
+
+  function resetList() {
+    ref.remove(function(error) {
+      if (error) {
+        console.log("Error;", error)
       } else {
         render()
       }
