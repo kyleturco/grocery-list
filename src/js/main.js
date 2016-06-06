@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
       if (error) {
         console.log("Error;", error);
       } else {
-        console.log("Removed successfully");
+        console.log("Item deleted");
         render()
       }
     })
