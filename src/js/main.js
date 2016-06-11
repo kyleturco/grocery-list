@@ -19,7 +19,10 @@ jQuery(document).ready(function($) {
       allGroceriesSnapshot.forEach(function(grocerySnapshot) {
         const key = grocerySnapshot.key()
         const item = grocerySnapshot.child("groceryItem").val()
-        $singleGrocery.append('<div class="grocery-item ' + key + '">' + item + deleteBtn + '</div>')
+        $singleGrocery.append(
+          '<div class="grocery-item ' + key + '">' +
+          '<p>' + item + '</p>' +
+          deleteBtn + '</div>')
       })
     })
   }
