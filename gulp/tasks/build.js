@@ -10,6 +10,7 @@ gulp.task('build', cb => {
   runSequence(
     'clean-build',
     [
+      'build-assets',
       'build-html',
       'build-less',
       'build-js',
@@ -45,6 +46,11 @@ gulp.task('build-js', cb => {
     .pipe(g.rename('main.min.js'))
     .pipe(gulp.dest(`${paths.dist}/js`));
 });
+
+gulp.task('build-assets', cb => {
+  return gulp.src(`${paths.src}/assets/**/*`)
+  .pipe(gulp.dest(`${paths.dist}/assets`));
+})
 
 gulp.task('clean-build', cb => {
   del.sync(paths.dist);
