@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
         const item = grocerySnapshot.child("groceryItem").val()
         $singleGrocery.append(
           '<div class="grocery-item ' + key + '">' +
-          '<p>' + item + '</p>' +
+          '<p class="grocery-name">' + item + '</p>' +
           deleteBtn + '</div>')
       })
     })

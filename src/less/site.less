@@ -1,4 +1,9 @@
+// general
+.container {
+  max-width: 500px;
+}
 
+// element specific
 .hero-section {
   background: @green;
   background: url(../assets/images/hero-bkg.jpg) no-repeat;
@@ -13,22 +18,24 @@
 
 .grocery-item {
   border-bottom: 1px solid @border-grey;
-  p {
-    font-size: 1.4em;
-    color: @grey-lighter;
-  }
+  position: relative;
+  height: 3.5em;
+}
+
+.grocery-name {
+  position: absolute;
+  font-size: 1.4em;
+  color: @grey-lighter;
+  top: 0.5em;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 0;
+  font-size: 1.75em;
+  color: @dark-red;
 }
 
 .reset-section {
   border-top: 1px solid @border-grey;
-}
-
-.container {
-  max-width: 500px;
-}
-
-.delete-btn {
-  color: @dark-red;
-  font-size: 1.25em;
-  padding-left: 0.5em;
 }
