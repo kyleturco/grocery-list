@@ -30,8 +30,7 @@ jQuery(document).ready(function($) {
   // click handlers
   $grocerySubmit.on('click', addGroceryItem)
   $document.on('click', '.delete-btn', function(e) {
-    completeGroceryItem(e)
-    // removeGroceryItem(e)
+    updateGroceryData(e)
   })
   $resetBtn.on('click', resetList)
 
@@ -39,7 +38,8 @@ jQuery(document).ready(function($) {
     const input = $groceryInput.val()
     const newInput = input.charAt(0).toUpperCase() + input.slice(1)
     ref.push({
-      groceryItem: newInput
+      groceryItem: newInput,
+      isComplete: false
     })
     $groceryInput.val('')
     render()
@@ -49,16 +49,13 @@ jQuery(document).ready(function($) {
     $(e.currentTarget).parent().addClass('completed')
   }
 
-  function removeGroceryItem(e) {
+  function updateGroceryData(e) {
     const groceryFbKey = $(e.currentTarget).parent().attr('class').split(' ').slice(1)
     const groceryItemRef = new Firebase(ref + '/' + groceryFbKey)
-    groceryItemRef.remove(function(error) {
-      if (error) {
-        console.log("Error;", error)
-      } else {
-        render()
-      }
+    groceryItemRef.update({
+      isComplete: true
     })
+    completeGroceryItem(e)
   }
 
   function resetList() {
