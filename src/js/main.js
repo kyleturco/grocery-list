@@ -7,10 +7,10 @@ jQuery(document).ready(function($) {
   const $grocerySubmit = $('.grocery-submit')
   const $groceryInput = $('#add-grocery-input')
   const $singleGrocery = $('.single-grocery-item')
-  const $deleteBtn = $('.delete-btn')
+  const $completeBtn = $('.complete-btn')
   const $resetBtn =   $('.reset-list-btn')
 
-  const deleteBtn = '<div class="btn delete-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></div>'
+  const renderCompleteBtn = '<div class="btn complete-btn"><i class="fa fa-circle-o" aria-hidden="true"></i></div>'
 
   function render() {
     $singleGrocery.empty()
@@ -22,14 +22,14 @@ jQuery(document).ready(function($) {
         $singleGrocery.append(
           '<div class="grocery-item ' + key + '">' +
           '<p class="grocery-name">' + item + '</p>' +
-          deleteBtn + '</div>')
+          renderCompleteBtn + '</div>')
       })
     })
   }
 
   // click handlers
   $grocerySubmit.on('click', addGroceryItem)
-  $document.on('click', '.delete-btn', function(e) {
+  $document.on('click', '.complete-btn', function(e) {
     updateGroceryData(e)
   })
   $resetBtn.on('click', resetList)
@@ -45,10 +45,6 @@ jQuery(document).ready(function($) {
     render()
   }
 
-  function completeGroceryItem(e) {
-    $(e.currentTarget).parent().addClass('completed')
-  }
-
   function updateGroceryData(e) {
     const groceryFbKey = $(e.currentTarget).parent().attr('class').split(' ').slice(1)
     const groceryItemRef = new Firebase(ref + '/' + groceryFbKey)
@@ -56,6 +52,11 @@ jQuery(document).ready(function($) {
       isComplete: true
     })
     completeGroceryItem(e)
+  }
+
+  function completeGroceryItem(e) {
+    $(e.currentTarget).parent().addClass('completed')
+    $(e.currentTarget).children().attr('class', 'fa fa-check-circle')
   }
 
   function resetList() {
