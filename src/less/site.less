@@ -25,7 +25,7 @@
 .grocery-name {
   position: absolute;
   font-size: 1.4em;
-  color: @grey-lighter;
+  color: @grey;
   top: 0.5em;
 }
 
@@ -38,4 +38,11 @@
 
 .reset-section {
   border-top: 1px solid @border-grey;
+}
+
+.completed {
+  .grocery-name {
+    color: @grey-lightest;
+    text-decoration: line-through;
+  }
 }

@@ -30,7 +30,8 @@ jQuery(document).ready(function($) {
   // click handlers
   $grocerySubmit.on('click', addGroceryItem)
   $document.on('click', '.delete-btn', function(e) {
-    removeGroceryItem(e)
+    completeGroceryItem(e)
+    // removeGroceryItem(e)
   })
   $resetBtn.on('click', resetList)
 
@@ -42,6 +43,10 @@ jQuery(document).ready(function($) {
     })
     $groceryInput.val('')
     render()
+  }
+
+  function completeGroceryItem(e) {
+    $(e.currentTarget).parent().addClass('completed')
   }
 
   function removeGroceryItem(e) {
